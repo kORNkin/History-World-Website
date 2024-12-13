@@ -1,0 +1,145 @@
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  background: linear-gradient(to bottom, #f9f1e7, #e5e8ed);
+  font-family: Arial, sans-serif;
+}
+
+header {
+  text-align: center;
+  margin-top: 5px;
+}
+.custom-container {
+  max-width: 1200px; /* Set a maximum width for the container */
+  width: 90%; /* Ensure it scales for different screen sizes */
+  margin: 0 auto; /* Center the container */
+  padding: 20px; /* Add inner spacing */
+  background-color: rgba(255, 255, 255, 0.9); /* Optional: Add a background color */
+  border-radius: 10px; /* Optional: Rounded corners */
+}
+.carousel-inner img {
+  width: 100%;
+  height: 400px; /* กำหนดความสูงเท่ากันสำหรับรูปภาพทั้งหมด */
+  object-fit: cover; /* ปรับให้รูปครอบคลุมพื้นที่ */
+}
+.header-divider {
+  border: 0;
+  height: 2px;
+  background-color: black;
+  margin: 15px 0;
+}
+header h1 {
+  margin-bottom: 10px;
+  margin: 0;
+}
+
+nav {
+  background-color: #FF9800;
+}
+hr {
+  border: none;
+  border-top: 2px solid black; /* เส้นหนา 2px สีดำ */
+  margin: 20px 0; /* ระยะห่างจากองค์ประกอบอื่น */
+}
+
+.vertical-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  gap: 20px;
+}
+
+.content-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  max-width: 800px;
+  text-align: center;
+}
+
+.content {
+  background-color: #f0f0f0;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 18px;
+}
+
+.hover-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, auto);
+  gap: 20px;
+  width: 100%;
+  max-width: 1200px;
+  margin-top: 20px;
+}
+
+.hover-component {
+  position: relative;
+  height: 200px;
+  color: white;
+  overflow: hidden;
+  border-radius: 10px;
+  border: 2px solid #000;
+  transition: transform 0.5s ease, width 0.5s ease, height 0.5s ease;
+}
+
+.hover-component:hover {
+  transform: scale(1.1);
+}
+
+.hover-component .text {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 14px;
+}
+
+.hover-component .letter {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  font-size: 72px;
+  font-weight: bold;
+  transition: font-size 0.5s ease, right 0.5s ease;
+}
+
+.hover-component:hover .letter {
+  font-size: 100px;
+  right: 20px;
+}
+
+/* Background colors for hover components */
+.bg1 { background-image: url(img/กรีก\ ปก1\ \(1\).png); }
+.bg2 { background-color: #2196F3; }
+.bg3 { background-color: #FF9800; }
+.bg4 { background-color: #F44336; }
+.bg5 { background-color: #9C27B0; }
+.bg6 { background-color: #FFC107; }
+
+footer {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 20px 10px;
+  margin-top: 40px;
+  width: 100%;
+}
+
+footer .about-me h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+footer .about-me p {
+  font-size: 16px;
+  line-height: 1.5;
+  max-width: 800px;
+  margin: 0 auto;
+}
