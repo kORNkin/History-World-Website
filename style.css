@@ -115,13 +115,12 @@ hr {
   right: 20px;
 }
 
-/* Background colors for hover components */
-.bg1 { background-image: url(img/กรีก\ ปก1\ \(1\).png); }
-.bg2 { background-color: #2196F3; }
-.bg3 { background-color: #FF9800; }
-.bg4 { background-color: #F44336; }
-.bg5 { background-color: #9C27B0; }
-.bg6 { background-color: #FFC107; }
+.hover-component img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 
 footer {
   background-color: #333;
