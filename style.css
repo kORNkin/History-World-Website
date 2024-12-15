@@ -1,144 +1,231 @@
+/* General Reset and Box Sizing */
+*, *::after, *::before {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+/* Body Styles */
 body {
+  font-family: Arial, sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 0;
   background: linear-gradient(to bottom, #f9f1e7, #e5e8ed);
-  font-family: Arial, sans-serif;
 }
 
+/* Navigation Styles */
+.navbar {
+  background: #fff;
+  color: #000;
+  opacity: 0.85;
+  position: fixed;
+  width: 100%;
+  box-shadow: 0px 5px 10px 0px #aaa;
+  z-index: 100;
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  height: 64px;
+  align-items: center;
+}
+.navbar a {
+  color: #444;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease-in-out;
+}
+
+.navbar a:hover {
+  color: #117964;
+}
+
+.menu-items {
+  display: flex;
+}
+
+.menu-items li {
+  list-style: none;
+  margin-left: 1.5rem;
+  font-size: 1.3rem;
+}
+
+.logo {
+  font-size: 2.3rem;
+}
+.container {
+  width: 80%;  /* ความกว้างของ container */
+  margin: 0 auto;
+}
+/* Hamburger Menu */
+.navbar input[type="checkbox"],
+.navbar .hamburger-lines {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+      opacity: 0.95;
+  }
+
+  .navbar-container input[type="checkbox"],
+  .navbar-container .hamburger-lines {
+      display: block;
+  }
+
+  .navbar-container input[type="checkbox"] {
+      position: absolute;
+      height: 32px;
+      width: 30px;
+      top: 20px;
+      left: 20px;
+      z-index: 5;
+      opacity: 0;
+      cursor: pointer;
+  }
+
+  .navbar-container .hamburger-lines {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 28px;
+      width: 35px;
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      z-index: 2;
+  }
+
+  .hamburger-lines .line {
+      height: 4px;
+      width: 100%;
+      border-radius: 10px;
+      background: #333;
+  }
+
+  .menu-items {
+      background: #fff;
+      position: absolute;
+      height: 100vh;
+      max-width: 300px;
+      padding-top: 100px;
+      transform: translate(-150%);
+      flex-direction: column;
+      box-shadow: 5px 0px 10px 0px #aaa;
+      transition: transform 0.5s ease-in-out;
+  }
+
+  .menu-items li {
+      margin-bottom: 1.8rem;
+      font-size: 1.1rem;
+  }
+
+  .navbar-container input[type="checkbox"]:checked ~ .menu-items {
+      transform: translateX(0);
+  }
+
+  .navbar-container input[type="checkbox"]:checked ~ .hamburger-lines .line1 {
+      transform: rotate(45deg);
+  }
+
+  .navbar-container input[type="checkbox"]:checked ~ .hamburger-lines .line2 {
+      transform: scaleY(0);
+  }
+
+  .navbar-container input[type="checkbox"]:checked ~ .hamburger-lines .line3 {
+      transform: rotate(-45deg);
+  }
+}
+
+/* Header and Container Styles */
 header {
   text-align: center;
   margin-top: 5px;
 }
+
 .custom-container {
-  max-width: 1200px; /* Set a maximum width for the container */
-  width: 90%; /* Ensure it scales for different screen sizes */
-  margin: 0 auto; /* Center the container */
-  padding: 20px; /* Add inner spacing */
-  background-color: rgba(255, 255, 255, 0.9); /* Optional: Add a background color */
-  border-radius: 10px; /* Optional: Rounded corners */
+  max-width: 1200px;
+  width: 90%;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: rgba(255, 20, 20, 0.9);
+  border-radius: 10px;
 }
-.carousel-inner img {
+
+.slider {
+  position: relative;
   width: 100%;
-  height: 400px; /* กำหนดความสูงเท่ากันสำหรับรูปภาพทั้งหมด */
-  object-fit: cover; /* ปรับให้รูปครอบคลุมพื้นที่ */
-}
-.header-divider {
-  border: 0;
-  height: 2px;
-  background-color: black;
-  margin: 15px 0;
-}
-header h1 {
-  margin-bottom: 10px;
+  height: auto;
   margin: 0;
+  overflow: hidden;
 }
 
-nav {
-  background-color: #4eb6d6;
-}
-hr {
-  border: none;
-  border-top: 2px solid black; /* เส้นหนา 2px สีดำ */
-  margin: 20px 0; /* ระยะห่างจากองค์ประกอบอื่น */
-}
-
-.vertical-layout {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.slider img {
   width: 100%;
-  max-width: 1200px;
-  gap: 20px;
+  height: auto;
+  object-fit: cover;
+  display: none;
 }
 
-.content-section {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  width: 100%;
-  max-width: 800px;
-  text-align: center;
+.slider img.active {
+  display: block;
 }
 
-.content {
-  background-color: #f0f0f0;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 18px;
-}
 
+
+/* Hover Component Grid */
 .hover-container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(2, auto);
-  gap: 20px;
-  width: 100%;
-  max-width: 1200px;
-  margin-top: 20px;
+  display: grid; /* ใช้ Grid */
+  grid-template-columns: repeat(3, 1fr); /* แบ่งออกเป็น 3 คอลัมน์ */
+  grid-template-rows: repeat(2, 200px); /* แบ่งออกเป็น 2 แถว ขนาดแถวละ 200px */
+  gap: 20px; /* ระยะห่างระหว่างกล่อง */
+  max-width: 1200px; /* กำหนดความกว้างสูงสุด */
+  margin: 20px auto; /* จัดกึ่งกลางทั้งแนวนอน */
+  justify-content: center; /* จัดให้อยู่กึ่งกลางในแนวนอน */
+  align-content: center; /* จัดให้อยู่กึ่งกลางในแนวตั้ง */
 }
+
 
 .hover-component {
   position: relative;
   height: 200px;
-  color: white;
   overflow: hidden;
   border-radius: 10px;
   border: 2px solid #000;
-  transition: transform 0.5s ease, width 0.5s ease, height 0.5s ease;
+  transition: transform 0.5s ease;
 }
 
 .hover-component:hover {
   transform: scale(1.1);
 }
 
-.hover-component .text {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  font-size: 14px;
-}
-
-.hover-component .letter {
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
-  font-size: 72px;
-  font-weight: bold;
-  transition: font-size 0.5s ease, right 0.5s ease;
-}
-
-.hover-component:hover .letter {
-  font-size: 100px;
-  right: 20px;
-}
-
-.hover-component img{
+.hover-component img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-
+/* Footer Styles */
 footer {
   background-color: #333;
   color: #fff;
   text-align: center;
-  padding: 20px 10px;
-  margin-top: 40px;
+  padding: 20px;
   width: 100%;
 }
 
-footer .about-me h2 {
+footer h2 {
   font-size: 24px;
   margin-bottom: 10px;
 }
 
-footer .about-me p {
+footer p {
   font-size: 16px;
   line-height: 1.5;
-  max-width: 800px;
-  margin: 0 auto;
 }
