@@ -1,5 +1,7 @@
 /* Navbar */
-
+.center {
+    text-align: center;
+}
 .navbar {
     position: relative;
     background-color: #f8f9fa;
@@ -11,6 +13,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-top: 20px;
 }
 
 .navbar .menu-items {
@@ -129,7 +132,7 @@
 
 .hover-component {
     position: relative;
-    height: 400px;
+    height: 200px;
     overflow: hidden;
     border-radius: 10px;
     border: 2px solid #000;

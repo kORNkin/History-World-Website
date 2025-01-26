@@ -41,6 +41,7 @@ body {
     justify-content: space-between;
     height: 64px;
     align-items: center;
+    margin-top: 20px;
 }
 
 .navbar a {

@@ -1,3 +1,9 @@
+
+
+.center {
+    text-align: center;
+}
+
 /* Navbar */
 
 .navbar {
@@ -11,6 +17,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-top: 20px;
 }
 
 .navbar .menu-items {
@@ -111,10 +118,8 @@
 .hover-container {
     display: grid;
     /* ใช้ Grid */
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     /* แบ่งออกเป็น 3 คอลัมน์ */
-    grid-template-rows: repeat(2, 200px);
-    /* แบ่งออกเป็น 2 แถว ขนาดแถวละ 200px */
     gap: 20px;
     /* ระยะห่างระหว่างกล่อง */
     max-width: 1200px;
