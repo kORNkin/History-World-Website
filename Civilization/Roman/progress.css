@@ -118,7 +118,7 @@
 .hover-container {
     display: grid;
     /* ใช้ Grid */
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     /* แบ่งออกเป็น 3 คอลัมน์ */
     gap: 20px;
     /* ระยะห่างระหว่างกล่อง */
@@ -132,6 +132,15 @@
     /* จัดให้อยู่กึ่งกลางในแนวตั้ง */
 }
 
+.hover-container-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    max-width: 1200px;
+    margin: 20px auto;
+    justify-content: center;
+    align-content: center;
+}
 .hover-component {
     position: relative;
     height: 400px;
@@ -149,4 +158,54 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+.container {
+    perspective: 1000px; /* ระยะห่างมุมมอง */
+}
+
+.flip-card {
+    width: 300px; /* ขนาดการ์ด */
+    height: 200px; /* ขนาดการ์ด */
+    position: relative;
+    cursor: pointer;
+}
+
+.flip-card-inner {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg); /* หมุนการ์ดเมื่อเมาส์อยู่บนการ์ด */
+}
+
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden; /* ซ่อนด้านหลัง */
+}
+
+.flip-card-front {
+    background-color: #fff; /* สีพื้นหลังด้านหน้า */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #ccc; /* ขอบการ์ด */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.flip-card-back {
+    background-color: #4CAF50; /* สีพื้นหลังด้านหลัง */
+    color: white; /* สีตัวอักษรด้านหลัง */
+    transform: rotateY(180deg); /* เริ่มต้นอยู่ด้านหลัง */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #ccc; /* ขอบการ์ด */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
