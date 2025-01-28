@@ -143,7 +143,7 @@
 }
 .hover-component {
     position: relative;
-    height: 400px;
+    height: 200px;
     overflow: hidden;
     border-radius: 10px;
     border: 2px solid #000;
@@ -160,15 +160,20 @@
     object-fit: cover;
 }
 
-.container {
+.container-2 {
     perspective: 1000px; /* ระยะห่างมุมมอง */
+    display: flex; /* ใช้ Flexbox */
+    justify-content: center; /* จัดให้อยู่ตรงกลางแนวนอน */
+    align-items: center; /* จัดให้อยู่ตรงกลางแนวตั้ง */
+    height: 100vh; /* ความสูงเต็มหน้าจอ */
 }
 
 .flip-card {
-    width: 300px; /* ขนาดการ์ด */
-    height: 200px; /* ขนาดการ์ด */
+    width: 450px; /* ขนาดการ์ด */
+    height: 300px; /* ขนาดการ์ด */
     position: relative;
     cursor: pointer;
+    
 }
 
 .flip-card-inner {
