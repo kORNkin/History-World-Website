@@ -4,6 +4,11 @@
     text-align: center;
 }
 
+p {
+    text-indent: 40px; /* ย่ออินเดนต์ */
+    margin-bottom: 15px; /* ระยะห่างระหว่างย่อหน้า */
+    font-size: 18px;
+  }
 /* Navbar */
 
 .navbar {
@@ -134,7 +139,7 @@
 
 .hover-component {
     position: relative;
-    height: 400px;
+    height: 600px;
     overflow: hidden;
     border-radius: 10px;
     border: 2px solid #000;
