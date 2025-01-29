@@ -1,28 +1,9 @@
 /* Navbar */
-
 .navbar {
     position: relative;
     background-color: #f8f9fa;
     padding: 0.8rem 1rem;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.navbar-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.navbar .menu-items {
-    list-style: none;
-    display: flex;
-    gap: 1.5rem;
-}
-
-.navbar .menu-items a {
-    text-decoration: none;
-    color: #333;
-    font-size: 1rem;
 }
 
 .navbar .logo {
@@ -31,105 +12,19 @@
     color: #333;
 }
 
-
-/* Hamburger Menu */
-
-.navbar input[type="checkbox"],
-.navbar .hamburger-lines {
-    display: none;
-}
-
-@media (max-width: 768px) {
-    .navbar-container input[type="checkbox"],
-    .navbar-container .hamburger-lines {
-        display: block;
-    }
-    .navbar-container input[type="checkbox"] {
-        position: absolute;
-        height: 32px;
-        width: 30px;
-        top: 20px;
-        left: 20px;
-        z-index: 5;
-        opacity: 0;
-        cursor: pointer;
-    }
-    .navbar-container .hamburger-lines {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        height: 28px;
-        width: 35px;
-        position: absolute;
-        top: 20px;
-        left: 20px;
-        z-index: 2;
-        cursor: pointer;
-    }
-    .hamburger-lines .line {
-        height: 4px;
-        width: 100%;
-        border-radius: 10px;
-        background: #333;
-        transition: all 0.3s ease-in-out;
-    }
-    .menu-items {
-        background: #fff;
-        position: fixed;
-        top: 0;
-        left: 0;
-        height: 100vh;
-        width: 75%;
-        transform: translateX(-100%);
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 1.5rem;
-        box-shadow: 5px 0px 10px 0px rgba(0, 0, 0, 0.1);
-        transition: transform 0.5s ease-in-out;
-        padding-top: 3rem;
-        z-index: 10;
-    }
-    .menu-items li {
-        margin-bottom: 1.8rem;
-        font-size: 1.1rem;
-    }
-    .navbar-container input[type="checkbox"]:checked~.menu-items {
-        transform: translateX(0);
-    }
-    .navbar-container input[type="checkbox"]:checked~.hamburger-lines .line1 {
-        transform: rotate(45deg) translate(5px, 5px);
-    }
-    .navbar-container input[type="checkbox"]:checked~.hamburger-lines .line2 {
-        transform: scaleY(0);
-    }
-    .navbar-container input[type="checkbox"]:checked~.hamburger-lines .line3 {
-        transform: rotate(-45deg) translate(5px, -5px);
-    }
-}
-
+/* Hover Container */
 .hover-container {
     display: grid;
-    /* ใช้ Grid */
-    grid-template-columns: repeat(3, 1fr);
-    /* แบ่งออกเป็น 3 คอลัมน์ */
-    grid-template-rows: repeat(2, 200px);
-    /* แบ่งออกเป็น 2 แถว ขนาดแถวละ 200px */
-    gap: 20px;
-    /* ระยะห่างระหว่างกล่อง */
-    max-width: 1200px;
-    /* กำหนดความกว้างสูงสุด */
-    margin: 20px auto;
-    /* จัดกึ่งกลางทั้งแนวนอน */
-    justify-content: center;
-    /* จัดให้อยู่กึ่งกลางในแนวนอน */
-    align-content: center;
-    /* จัดให้อยู่กึ่งกลางในแนวตั้ง */
+    grid-template-columns: repeat(3, 1fr); /* 3 คอลัมน์บนหน้าจอขนาดใหญ่ */
+    grid-template-rows: repeat(2, 200px); /* 2 แถว ขนาดแถวละ 200px */
+    gap: 20px; /* ระยะห่างระหว่างกล่อง */
+    max-width: 1200px; /* ความกว้างสูงสุด */
+    margin: 20px auto; /* จัดกึ่งกลางทั้งแนวนอน */
 }
 
 .hover-component {
     position: relative;
-    height: 400px;
+    height: 350px; /* ความสูงของการ์ด */
     overflow: hidden;
     border-radius: 10px;
     border: 2px solid #000;
@@ -141,7 +36,25 @@
 }
 
 .hover-component img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    max-width: 100%; /* ให้ภาพไม่เกินขนาดของ div */
+    height: auto; /* รักษาสัดส่วนของภาพ */
+}
+
+/* ปรับสไตล์สำหรับอุปกรณ์มือถือ */
+@media (max-width: 768px) {
+    .hover-container {
+        grid-template-columns: repeat(2, 1fr); /* ใช้ 2 คอลัมน์บนมือถือ */
+    }
+
+    .hover-component {
+        height: 200px; /* ปรับความสูงของการ์ดให้เหมาะสม */
+    }
+
+    .navbar .navbar-nav .nav-link {
+        font-size: 0.9rem; /* ลดขนาดตัวอักษรในเมนู */
+    }
+
+    .navbar .logo {
+        font-size: 1.3rem; /* ปรับขนาดตัวอักษรของโลโก้ */
+    }
 }

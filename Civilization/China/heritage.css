@@ -1,11 +1,8 @@
-
-
 .center {
     text-align: center;
 }
 
 /* Navbar */
-
 .navbar {
     position: relative;
     background-color: #f8f9fa;
@@ -38,9 +35,7 @@
     color: #333;
 }
 
-
 /* Hamburger Menu */
-
 .navbar input[type="checkbox"],
 .navbar .hamburger-lines {
     display: none;
@@ -51,6 +46,7 @@
     .navbar-container .hamburger-lines {
         display: block;
     }
+
     .navbar-container input[type="checkbox"] {
         position: absolute;
         height: 32px;
@@ -61,6 +57,7 @@
         opacity: 0;
         cursor: pointer;
     }
+
     .navbar-container .hamburger-lines {
         display: flex;
         flex-direction: column;
@@ -73,6 +70,7 @@
         z-index: 2;
         cursor: pointer;
     }
+
     .hamburger-lines .line {
         height: 4px;
         width: 100%;
@@ -80,6 +78,7 @@
         background: #333;
         transition: all 0.3s ease-in-out;
     }
+
     .menu-items {
         background: #fff;
         position: fixed;
@@ -97,42 +96,31 @@
         padding-top: 3rem;
         z-index: 10;
     }
+
     .menu-items li {
         margin-bottom: 1.8rem;
         font-size: 1.1rem;
     }
+
     .navbar-container input[type="checkbox"]:checked~.menu-items {
         transform: translateX(0);
     }
+
     .navbar-container input[type="checkbox"]:checked~.hamburger-lines .line1 {
         transform: rotate(45deg) translate(5px, 5px);
     }
+
     .navbar-container input[type="checkbox"]:checked~.hamburger-lines .line2 {
         transform: scaleY(0);
     }
+
     .navbar-container input[type="checkbox"]:checked~.hamburger-lines .line3 {
         transform: rotate(-45deg) translate(5px, -5px);
     }
 }
 
-.hover-container {
-    display: grid;
-    /* ใช้ Grid */
-    grid-template-columns: repeat(3, 1fr);
-    /* แบ่งออกเป็น 3 คอลัมน์ */
-    gap: 20px;
-    /* ระยะห่างระหว่างกล่อง */
-    max-width: 1200px;
-    /* กำหนดความกว้างสูงสุด */
-    margin: 20px auto;
-    /* จัดกึ่งกลางทั้งแนวนอน */
-    justify-content: center;
-    /* จัดให้อยู่กึ่งกลางในแนวนอน */
-    align-content: center;
-    /* จัดให้อยู่กึ่งกลางในแนวตั้ง */
-}
-
-.hover-container-2 {
+/* Layout ปรับตามอุปกรณ์ */
+.hover-container, .hover-container-2 {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
@@ -141,6 +129,21 @@
     justify-content: center;
     align-content: center;
 }
+
+/* ปรับ layout บนอุปกรณ์มือถือ */
+@media (max-width: 1024px) {
+    .hover-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .hover-container, .hover-container-2 {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+/* Hover Effect */
 .hover-component {
     position: relative;
     height: 200px;
@@ -151,7 +154,7 @@
 }
 
 .hover-component:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
 
 .hover-component img {
@@ -160,20 +163,20 @@
     object-fit: cover;
 }
 
+/* Flip Card */
 .container-2 {
-    perspective: 1000px; /* ระยะห่างมุมมอง */
-    display: flex; /* ใช้ Flexbox */
-    justify-content: center; /* จัดให้อยู่ตรงกลางแนวนอน */
-    align-items: center; /* จัดให้อยู่ตรงกลางแนวตั้ง */
-    height: 100vh; /* ความสูงเต็มหน้าจอ */
+    perspective: 1000px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
 }
 
 .flip-card {
-    width: 450px; /* ขนาดการ์ด */
-    height: 300px; /* ขนาดการ์ด */
+    width: 350px;
+    height: 250px;
     position: relative;
     cursor: pointer;
-    
 }
 
 .flip-card-inner {
@@ -185,32 +188,40 @@
 }
 
 .flip-card:hover .flip-card-inner {
-    transform: rotateY(180deg); /* หมุนการ์ดเมื่อเมาส์อยู่บนการ์ด */
+    transform: rotateY(180deg);
 }
 
 .flip-card-front, .flip-card-back {
     position: absolute;
     width: 100%;
     height: 100%;
-    backface-visibility: hidden; /* ซ่อนด้านหลัง */
+    backface-visibility: hidden;
 }
 
 .flip-card-front {
-    background-color: #fff; /* สีพื้นหลังด้านหน้า */
+    background-color: #fff;
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid #ccc; /* ขอบการ์ด */
+    border: 1px solid #ccc;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .flip-card-back {
-    background-color: #4CAF50; /* สีพื้นหลังด้านหลัง */
-    color: white; /* สีตัวอักษรด้านหลัง */
-    transform: rotateY(180deg); /* เริ่มต้นอยู่ด้านหลัง */
+    background-color: #4CAF50;
+    color: white;
+    transform: rotateY(180deg);
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid #ccc; /* ขอบการ์ด */
+    border: 1px solid #ccc;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* ปรับ Flip Card สำหรับมือถือ */
+@media (max-width: 768px) {
+    .flip-card {
+        width: 300px;
+        height: 200px;
+    }
 }
