@@ -1,8 +1,8 @@
+/* Navbar */
 .center {
     text-align: center;
 }
 
-/* Navbar */
 .navbar {
     position: relative;
     background-color: #f8f9fa;
@@ -43,8 +43,8 @@
 
 @media (max-width: 768px) {
     .navbar-container {
-        flex-direction: column; /* จัดแนวให้เป็นแนวตั้งบนมือถือ */
-        align-items: flex-start; /* จัดให้เริ่มต้นที่ด้านซ้าย */
+        flex-direction: column; /* เปลี่ยนแนวจากแนวนอนเป็นแนวตั้ง */
+        align-items: flex-start; /* จัดให้อยู่ที่เริ่มต้น */
     }
 
     .navbar-container input[type="checkbox"],
@@ -124,29 +124,21 @@
     }
 }
 
+/* Hover Container */
 .hover-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* 3 คอลัมน์ */
+    grid-template-rows: repeat(2, 200px); /* 2 แถว ขนาดแถวละ 200px */
     gap: 20px; /* ระยะห่างระหว่างกล่อง */
-    max-width: 1200px; /* ความกว้างสูงสุด */
-    margin: 20px auto; /* จัดกึ่งกลาง */
+    max-width: 1200px; /* กำหนดความกว้างสูงสุด */
+    margin: 20px auto; /* จัดกึ่งกลางทั้งแนวนอน */
     justify-content: center; /* จัดให้อยู่กึ่งกลางในแนวนอน */
     align-content: center; /* จัดให้อยู่กึ่งกลางในแนวตั้ง */
 }
 
-.hover-container-2 {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 คอลัมน์ */
-    gap: 20px;
-    max-width: 1200px;
-    margin: 20px auto;
-    justify-content: center;
-    align-content: center;
-}
-
 .hover-component {
     position: relative;
-    height: 200px;
+    height: 400px; /* ความสูงของการ์ด */
     overflow: hidden;
     border-radius: 10px;
     border: 2px solid #000;
@@ -160,66 +152,20 @@
 .hover-component img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-}
-
-.container-2 {
-    perspective: 1000px; /* ระยะห่างมุมมอง */
-    display: flex; /* ใช้ Flexbox */
-    justify-content: center; /* จัดให้อยู่ตรงกลางแนวนอน */
-    align-items: center; /* จัดให้อยู่ตรงกลางแนวตั้ง */
-    height: 100vh; /* ความสูงเต็มหน้าจอ */
-}
-
-.flip-card {
-    width: 450px; /* ขนาดการ์ด */
-    height: 300px; /* ขนาดการ์ด */
-    position: relative;
-    cursor: pointer;
-}
-
-.flip-card-inner {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    transition: transform 0.6s;
-    transform-style: preserve-3d;
-}
-
-.flip-card:hover .flip-card-inner {
-    transform: rotateY(180deg); /* หมุนการ์ดเมื่อเมาส์อยู่บนการ์ด */
-}
-
-.flip-card-front,
-.flip-card-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden; /* ซ่อนด้านหลัง */
-}
-
-.flip-card-front {
-    background-color: #fff; /* สีพื้นหลังด้านหน้า */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid #ccc; /* ขอบการ์ด */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.flip-card-back {
-    background-color: #4CAF50; /* สีพื้นหลังด้านหลัง */
-    color: white; /* สีตัวอักษรด้านหลัง */
-    transform: rotateY(180deg); /* เริ่มต้นอยู่ด้านหลัง */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid #ccc; /* ขอบการ์ด */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    object-fit: cover; /* ปรับขนาดภาพ */
 }
 
 /* ปรับสไตล์สำหรับอุปกรณ์มือถือ */
 @media (max-width: 768px) {
+    .hover-container {
+        grid-template-columns: repeat(2, 1fr); /* 2 คอลัมน์บนมือถือ */
+        grid-template-rows: repeat(2, 200px); /* ปรับความสูงของแถว */
+    }
+
+    .hover-component {
+        height: 200px; /* ปรับความสูงของการ์ดให้เหมาะสม */
+    }
+
     .navbar .menu-items {
         flex-direction: column; /* จัดให้เมนูในแนวตั้ง */
     }
@@ -230,18 +176,5 @@
 
     .navbar .logo {
         font-size: 1.3rem; /* ปรับขนาดตัวอักษรของโลโก้ */
-    }
-
-    .hover-container {
-        grid-template-columns: repeat(2, 1fr); /* ปรับจำนวนคอลัมน์เป็น 2 บนมือถือ */
-    }
-
-    .hover-component {
-        height: 150px; /* ปรับความสูงการ์ดให้เหมาะสม */
-    }
-
-    .flip-card {
-        width: 90%; /* ปรับขนาดการ์ดให้พอดีกับหน้าจอ */
-        height: auto; /* ปรับความสูงอัตโนมัติ */
     }
 }
