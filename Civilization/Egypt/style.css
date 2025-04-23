@@ -1,135 +1,206 @@
-/* Navbar */
-
-.navbar {
-    position: relative;
-    background-color: #f8f9fa;
-    padding: 0.8rem 1rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+/* Global Vintage Palette */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.navbar-container {
+body {
+    background: url('assets/parchment-texture.jpg') center/cover fixed, #f5f1e8;
+    color: #333;
+    font-family: 'Merriweather', serif;
+    line-height: 1.6;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+h1,
+h2,
+h3 {
+    font-family: 'Cinzel', serif;
+    color: #7B2C2C;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* Navbar */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 1rem 0;
+    background: rgba(245, 241, 232, 0.92);
+    backdrop-filter: blur(6px);
+    z-index: 1000;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+}
+
+.nav-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.navbar .menu-items {
+.logo {
+    font-size: 1.7rem;
+    font-weight: 700;
+    color: #7B2C2C;
+    display: flex;
+    align-items: center;
+}
+
+.logo-icon {
+    font-size: 1.9rem;
+    margin-right: 0.5rem;
+}
+
+.nav-links {
     list-style: none;
     display: flex;
-    gap: 1.5rem;
+    gap: 2rem;
 }
 
-.navbar .menu-items a {
-    text-decoration: none;
+.nav-link {
     color: #333;
-    font-size: 1rem;
+    font-weight: 500;
+    position: relative;
+    padding: 0.5rem 0;
 }
 
-.navbar .logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #333;
+.nav-link::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #D4AF37;
+    transition: width .3s;
 }
 
+.nav-link:hover::before {
+    width: 100%;
+}
 
-/* Hamburger Menu */
+.socials {
+    display: flex;
+    gap: 1rem;
+    margin-left: 3rem;
+}
 
-.navbar input[type="checkbox"],
-.navbar .hamburger-lines {
+.social-icon {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.social-icon:hover {
+    background: rgba(224, 170, 62, 0.2);
+    color: #fff;
+    transform: translateY(-2px);
+    border-color: rgba(224, 170, 62, 0.4);
+}
+
+.menu-toggle {
     display: none;
+    color: white;
+    font-size: 1.6rem;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.menu-toggle:hover {
+    transform: scale(1.1);
+}
+
+/* Scrolled State */
+
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+    .nav-container {
+        padding: 0 2rem;
+    }
+
+    .nav-links {
+        gap: 1.8rem;
+    }
+
+    .socials {
+        margin-left: 2rem;
+    }
 }
 
 @media (max-width: 768px) {
-    .navbar-container input[type="checkbox"],
-    .navbar-container .hamburger-lines {
-        display: block;
+    .nav-container {
+        padding: 0 1.5rem;
     }
-    .navbar-container input[type="checkbox"] {
-        position: absolute;
-        height: 32px;
-        width: 30px;
-        top: 20px;
-        left: 20px;
-        z-index: 5;
-        opacity: 0;
-        cursor: pointer;
-    }
-    .navbar-container .hamburger-lines {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        height: 28px;
-        width: 35px;
-        position: absolute;
-        top: 20px;
-        left: 20px;
-        z-index: 2;
-        cursor: pointer;
-    }
-    .hamburger-lines .line {
-        height: 4px;
-        width: 100%;
-        border-radius: 10px;
-        background: #333;
-        transition: all 0.3s ease-in-out;
-    }
-    .menu-items {
-        background: #fff;
+
+    .nav-links {
         position: fixed;
-        top: 0;
-        left: 0;
-        height: 100vh;
-        width: 75%;
-        transform: translateX(-100%);
+        top: 76px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 76px);
+        background: #0c0d1a;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
+        justify-content: flex-start;
+        padding: 3rem 0;
+        gap: 2.5rem;
+        transition: left 0.4s ease-out;
+        z-index: 999;
+    }
+
+    .nav-links.active {
+        left: 0;
+    }
+
+    .nav-link {
+        font-size: 1.2rem;
+        padding: 0.8rem 1.5rem;
+    }
+
+    .nav-link::before {
+        height: 3px;
+        bottom: 0.5rem;
+    }
+
+    .socials {
+        margin: 3rem 0 0;
         gap: 1.5rem;
-        box-shadow: 5px 0px 10px 0px rgba(0, 0, 0, 0.1);
-        transition: transform 0.5s ease-in-out;
-        padding-top: 3rem;
-        z-index: 10;
     }
-    .menu-items li {
-        margin-bottom: 1.8rem;
-        font-size: 1.1rem;
+
+    .social-icon {
+        width: 44px;
+        height: 44px;
+        font-size: 1.2rem;
     }
-    .navbar-container input[type="checkbox"]:checked~.menu-items {
-        transform: translateX(0);
-    }
-    .navbar-container input[type="checkbox"]:checked~.hamburger-lines .line1 {
-        transform: rotate(45deg) translate(5px, 5px);
-    }
-    .navbar-container input[type="checkbox"]:checked~.hamburger-lines .line2 {
-        transform: scaleY(0);
-    }
-    .navbar-container input[type="checkbox"]:checked~.hamburger-lines .line3 {
-        transform: rotate(-45deg) translate(5px, -5px);
+
+    .menu-toggle {
+        display: block;
     }
 }
-
-.hover-container {
-    display: grid;
-    /* ใช้ Grid */
-    grid-template-columns: repeat(3, 1fr);
-    /* แบ่งออกเป็น 3 คอลัมน์ */
-    grid-template-rows: repeat(2, 200px);
-    /* แบ่งออกเป็น 2 แถว ขนาดแถวละ 200px */
-    gap: 20px;
-    /* ระยะห่างระหว่างกล่อง */
-    max-width: 1200px;
-    /* กำหนดความกว้างสูงสุด */
-    margin: 20px auto;
-    /* จัดกึ่งกลางทั้งแนวนอน */
-    justify-content: center;
-    /* จัดให้อยู่กึ่งกลางในแนวนอน */
-    align-content: center;
-    /* จัดให้อยู่กึ่งกลางในแนวตั้ง */
-}
-
+/* Hover Container */
 .hover-component {
     position: relative;
-    height: 400px;
+    width: 100%;
+    height: 100%;
     overflow: hidden;
     border-radius: 10px;
     border: 2px solid #000;
@@ -144,4 +215,53 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+    display: block;
 }
+
+/* Container layout */
+.hover-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 1200px;
+    margin: 20px auto;
+    height: auto;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .hover-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .hover-component {
+        height: 200px; /* กำหนดความสูงให้เหมาะกับจอเล็ก */
+    }
+}
+
+@media (max-width: 480px) {
+    .hover-container {
+        grid-template-columns: 1fr;
+    }
+
+    .hover-component {
+        height: 180px;
+    }
+}
+@media (min-width: 380px) and (max-width: 480px) {
+    .hover-container {
+        grid-template-columns: repeat(2, 1fr); /* แสดง 2 คอลัมน์บนหน้าจอเล็ก */
+    }
+
+    .hover-component {
+        height: 180px; /* ความสูงของการ์ด */
+    }
+
+    .hover-component img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* ให้ภาพเต็มกรอบ */
+        display: block;
+    }
+}
+
