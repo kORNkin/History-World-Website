@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>World History Slider</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: sans-serif;
+    }
+
+    .hero {
+      height: 100vh;
+      background-size: contain; /* ✅ แสดงภาพเต็มแบบไม่ถูกครอบ */
+      background-position: center;
+      background-repeat: no-repeat; /* ✅ ไม่ให้ภาพซ้ำ */
+      position: relative;
+      transition: background-image 0.5s ease-in-out;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 30%;
+      left: 5%;
+      max-width: 600px;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 30px;
+      border-radius: 10px;
+      color: white;
+    }
+
+    .slider-counter {
+      font-size: 2.5rem;
+      font-weight: bold;
+    }
+
+    .slider-counter span {
+      font-size: 1.5rem;
+      font-weight: 300;
+      color: #ccc;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin: 20px 0;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      background-color: #1abc9c;
+      color: white;
+      padding: 15px 30px;
+      text-decoration: none;
+      font-weight: 600;
+      border-radius: 8px;
+      display: inline-block;
+    }
+
+    .arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      border: none;
+      padding: 12px 18px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      border-radius: 10px;
+    }
+
+    .arrow.left {
+      left: 20px;
+    }
+
+    .arrow.right {
+      right: 20px;
+    }
+
+    .dots {
+      position: absolute;
+      bottom: 20px;
+      left: 40px;
+      display: flex;
+      gap: 10px;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      background: #fff;
+      border-radius: 50%;
+      opacity: 0.5;
+      cursor: pointer;
+    }
+
+    .dot.active {
+      opacity: 1;
+    }
+
+    /* ✅ ปรับ overlay บนจอเล็ก */
+    @media (max-width: 430px) {
+      .overlay {
+        top: auto;
+        bottom: 30px;
+        left: 10px;
+        right: 10px;
+        padding: 20px;
+        max-width: unset;
+        font-size: 0.9rem;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .slider-counter {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="overlay">
+    <div class="slider-counter">01 <span>/ 06</span></div>
+    <h1>World History</h1>
+    <p>
+      Welcome to World History. Dive into the fascinating narratives of civilizations from India to Greece,
+      exploring the rich tapestry of our past through engaging content and interactive learning experiences.
+    </p>
+    <a href="#" class="btn">Services</a>
+  </div>
+  <button class="arrow left">&#10094;</button>
+  <button class="arrow right">&#10095;</button>
+  <div class="dots">
+    <span class="dot active" data-index="0"></span>
+    <span class="dot" data-index="1"></span>
+    <span class="dot" data-index="2"></span>
+    <span class="dot" data-index="3"></span>
+    <span class="dot" data-index="4"></span>
+    <span class="dot" data-index="5"></span>
+  </div>
+</section>
+
+<script>
+  const images = [
+    "img/index/index-slider/index-china.png",
+    "img/index/index-slider/index-egypt.png",
+    "img/index/index-slider/index-greek.png",
+    "img/index/index-slider/index-india.png",
+    "img/index/index-slider/index-meso.png",
+    "img/index/index-slider/index-roman.png"
+  ];
+
+  const hero = document.querySelector('.hero');
+  const counter = document.querySelector('.slider-counter');
+  const dots = document.querySelectorAll('.dot');
+
+  let currentSlide = 0;
+
+  function updateSlide(index) {
+    currentSlide = index;
+    hero.style.backgroundImage = `url('${images[currentSlide]}')`;
+    counter.innerHTML = `0${currentSlide + 1} <span>/ 06</span>`;
+    dots.forEach(dot => dot.classList.remove('active'));
+    dots[currentSlide].classList.add('active');
+  }
+
+  document.querySelector('.arrow.left').addEventListener('click', () => {
+    let newIndex = currentSlide - 1;
+    if (newIndex < 0) newIndex = images.length - 1;
+    updateSlide(newIndex);
+  });
+
+  document.querySelector('.arrow.right').addEventListener('click', () => {
+    let newIndex = (currentSlide + 1) % images.length;
+    updateSlide(newIndex);
+  });
+
+  dots.forEach(dot => {
+    dot.addEventListener('click', () => {
+      const index = parseInt(dot.dataset.index);
+      updateSlide(index);
+    });
+  });
+
+  updateSlide(0);
+</script>
+
+</body>
+</html>
