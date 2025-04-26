@@ -1,0 +1,356 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body,
+html {
+  height: 100%;
+  font-family: 'Playfair Display', serif;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: url('assets/parchment-texture.jpg') center/cover fixed, #f5f1e8;
+  color: #333;
+  font-family: 'Merriweather', serif;
+  line-height: 1.6;
+}
+
+/* Navbar */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 1rem 0;
+  background: rgba(245, 241, 232, 0.92);
+  backdrop-filter: blur(6px);
+  z-index: 1000;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+}
+
+.nav-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: #7B2C2C;
+  display: flex;
+  align-items: center;
+}
+
+.logo-icon {
+  font-size: 1.9rem;
+  margin-right: 0.5rem;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-link {
+  color: #333;
+  font-weight: 500;
+  position: relative;
+  padding: 0.5rem 0;
+}
+
+.nav-link::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #D4AF37;
+  transition: width .3s;
+}
+
+.nav-link:hover::before {
+  width: 100%;
+}
+
+.socials {
+  display: flex;
+  gap: 1rem;
+  margin-left: 3rem;
+}
+
+.social-icon {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.social-icon:hover {
+  background: rgba(224, 170, 62, 0.2);
+  color: #fff;
+  transform: translateY(-2px);
+  border-color: rgba(224, 170, 62, 0.4);
+}
+
+.menu-toggle {
+  display: none;
+  color: white;
+  font-size: 1.6rem;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.menu-toggle:hover {
+  transform: scale(1.1);
+}
+
+/* Scrolled State */
+
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+  .nav-container {
+      padding: 0 2rem;
+  }
+
+  .nav-links {
+      gap: 1.8rem;
+  }
+
+  .socials {
+      margin-left: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-container {
+      padding: 0 1.5rem;
+  }
+
+  .nav-links {
+      position: fixed;
+      top: 76px;
+      left: -100%;
+      width: 100%;
+      height: calc(100vh - 76px);
+      background: #f5f1e8;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 3rem 0;
+      gap: 2.5rem;
+      transition: left 0.4s ease-out;
+      z-index: 999;
+  }
+
+  .nav-links.active {
+      left: 0;
+  }
+
+  .nav-link {
+      font-size: 1.2rem;
+      padding: 0.8rem 1.5rem;
+  }
+
+  .nav-link::before {
+      height: 3px;
+      bottom: 0.5rem;
+  }
+
+  .socials {
+      margin: 3rem 0 0;
+      gap: 1.5rem;
+  }
+
+  .social-icon {
+      width: 44px;
+      height: 44px;
+      font-size: 1.2rem;
+  }
+
+  .menu-toggle {
+      display: block;
+  }
+}
+.container {
+  display: flex;
+  min-height: 100vh; /* ถ้าอยากให้เริ่มต้นเต็มจอ แต่ยืดได้ตามเนื้อหา */
+}
+
+/* Left panel */
+.left-panel {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+.left-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Right panel */
+.right-panel {
+  flex: 1;
+  background: #f5f1e8;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* ทำให้เนื้อหากลางแนวตั้ง */
+  padding: 0 60px;
+}
+
+/* Responsive: Mobile */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    min-height: auto; /* ปล่อยสูงตามเนื้อหา */
+  }
+
+  .left-panel, .right-panel {
+    width: 100%;
+    height: auto;
+  }
+
+  .left-panel {
+    background-position: center top;
+  }
+
+  .left-image {
+    height: auto;
+  }
+
+  .right-panel {
+    padding: 20px;
+    text-align: center;
+  }
+}
+
+
+/* === Courses Section === */
+.courses-section {
+  background-color: #f4f0ea;
+  padding: 20px 40px;
+  text-align: center;
+  font-family: 'Georgia', serif;
+}
+
+.courses-title {
+  font-size: 48px;
+  letter-spacing: 2px;
+  color: #5e4b32;
+  margin-bottom: 10px;
+}
+
+.courses-subtitle {
+  font-size: 18px;
+  max-width: 920px;
+  margin: 0 auto 50px;
+  color: #333;
+}
+
+/* Course Cards Grid */
+.courses-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  justify-items: center;
+}
+
+/* Individual Card */
+.course-card {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  height: 480px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease;
+}
+
+.course-card:hover {
+  transform: scale(1.02);
+}
+
+/* Overlay Style */
+.overlay {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 30px 20px;
+  background: linear-gradient(to top, rgba(0,0,0,0.6), rgba(0,0,0,0.2));
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 100%;
+  transition: background 0.3s ease;
+}
+
+.overlay h3 {
+  font-size: 24px;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.overlay p {
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.course-button {
+  font-size: 16px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-flex;
+  align-items: center;
+}
+
+.course-button span {
+  margin-left: 6px;
+  transition: transform 0.3s ease;
+}
+
+.course-button:hover span {
+  transform: translateX(4px);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .courses-title {
+    font-size: 32px;
+  }
+
+  .overlay h3 {
+    font-size: 20px;
+  }
+
+  .overlay p {
+    font-size: 14px;
+  }
+}
