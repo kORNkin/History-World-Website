@@ -1,15 +1,4 @@
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body,
-html {
-  height: 100%;
-  font-family: 'Playfair Display', serif;
-}
-* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -19,7 +8,39 @@ body {
   background: url('assets/parchment-texture.jpg') center/cover fixed, #f5f1e8;
   color: #333;
   font-family: 'Merriweather', serif;
+  margin: 0;
+  padding: 0;
   line-height: 1.6;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+h1,
+h2,
+h3 {
+  font-family: 'Cinzel', serif;
+  color: #7B2C2C;
+}
+
+a {
+  text-decoration: none;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+h1,
+h2,
+h3 {
+  font-family: 'Cinzel', serif;
+  color: #7B2C2C;
+}
+
+a {
+  text-decoration: none;
 }
 
 /* Navbar */
@@ -191,220 +212,72 @@ body {
       display: block;
   }
 }
-.container {
-  display: flex;
-  height: 100vh;
-}
 
-/* Left panel with background image */
-.left-panel {
-  flex: 1;
-  position: relative;
-  overflow: hidden;
-}
-
-.left-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-/* Replace 'your-image.jpg' with actual image path or use the one you uploaded */
-
-.social-icons {
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  color: white;
-  font-size: 20px;
-}
-
-/* Right panel */
-.right-panel {
-  flex: 1;
-  background: #f5f1e8;
-  display: flex;
-  flex-direction: column;
-  padding: 0 60px;
-}
-
-.right-panel h1 {
-  font-size: 48px;
-  margin-bottom: 20px;
-}
-
-.right-panel p {
-  font-size: 18px;
-  margin-bottom: 30px;
-}
-
-.right-panel button {
-  background-color: #444;
-  color: white;
-  border: none;
-  padding: 12px 24px;
-  font-size: 16px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.right-panel button:hover {
-  background-color: #222;
-}
-
-.container.reverse {
-  flex-direction: row-reverse;
-}
-@media (max-width: 768px) {
-  .container {
-    flex-direction: column;
-  }
-
-  .left-panel, .right-panel {
-    flex: unset;
-    width: 100%;
-    height: 50vh;
-  }
-
-  .left-panel {
-    background-position: center top;
-  }
-
-  .right-panel {
-    padding: 20px;
-    text-align: center;
-  }
-
-  .right-panel h1 {
-    font-size: 32px;
-  }
-
-  .right-panel p {
-    font-size: 16px;
-  }
-
-  .right-panel button {
-    font-size: 14px;
-    padding: 10px 20px;
-  }
-
-  .social-icons {
-    flex-direction: row;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-}
-
-/* === Courses Section === */
-.courses-section {
-  background-color: #f4f0ea;
-  padding: 80px 40px;
+.features {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
   text-align: center;
-  font-family: 'Georgia', serif;
 }
 
-.courses-title {
-  font-size: 48px;
-  letter-spacing: 2px;
-  color: #5e4b32;
+.features h1 {
+  font-size: 2.5em;
   margin-bottom: 10px;
 }
 
-.courses-subtitle {
-  font-size: 18px;
-  max-width: 800px;
-  margin: 0 auto 50px;
-  color: #333;
+.subtitle {
+  font-size: 1em;
+  color: #555;
+  margin-bottom: 40px;
 }
 
-/* Course Cards Grid */
-.courses-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 30px;
-  justify-items: center;
-}
-
-/* Individual Card */
-.course-card {
-  position: relative;
-  width: 100%;
-  max-width: 400px;
-  height: 480px;
-  background-size: cover;
-  background-position: center;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-  transition: transform 0.3s ease;
-}
-
-.course-card:hover {
-  transform: scale(1.02);
-}
-
-/* Overlay Style */
-.overlay {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  padding: 30px 20px;
-  background: linear-gradient(to top, rgba(0,0,0,0.6), rgba(0,0,0,0.2));
-  color: #fff;
+.feature-grid {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  height: 100%;
-  transition: background 0.3s ease;
+  gap: 40px;
 }
 
-.overlay h3 {
-  font-size: 24px;
-  margin-bottom: 15px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.overlay p {
-  font-size: 16px;
-  line-height: 1.5;
-  margin-bottom: 20px;
-}
-
-.course-button {
-  font-size: 16px;
-  color: #fff;
-  text-decoration: none;
-  font-weight: bold;
-  display: inline-flex;
+.feature-item {
+  display: flex;
+  flex-wrap: wrap;
   align-items: center;
+  justify-content: center;
+  gap: 20px;
 }
 
-.course-button span {
-  margin-left: 6px;
-  transition: transform 0.3s ease;
+.feature-item:nth-child(even) {
+  flex-direction: row-reverse;
 }
 
-.course-button:hover span {
-  transform: translateX(4px);
+.feature-item img {
+  max-width: 500px;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
 }
 
-/* Responsive */
-@media (max-width: 600px) {
-  .courses-title {
-    font-size: 32px;
+.feature-text {
+  max-width: 500px;
+  text-align: left;
+}
+
+.feature-text h2 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.feature-text p {
+  font-size: 1em;
+  line-height: 1.6;
+  color: #666;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .feature-item {
+      flex-direction: column !important;
   }
-
-  .overlay h3 {
-    font-size: 20px;
-  }
-
-  .overlay p {
-    font-size: 14px;
+  .feature-text {
+      text-align: center;
   }
 }

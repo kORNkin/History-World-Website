@@ -1,247 +1,283 @@
-.center {
-    text-align: center;
-}
-
-/* Navbar */
-.navbar {
-    position: relative;
-    background-color: #f8f9fa;
-    padding: 0.8rem 1rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.navbar-container {
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    background: url('assets/parchment-texture.jpg') center/cover fixed, #f5f1e8;
+    color: #333;
+    font-family: 'Merriweather', serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  h1,
+  h2,
+  h3 {
+    font-family: 'Cinzel', serif;
+    color: #7B2C2C;
+  }
+  
+  a {
+    text-decoration: none;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  h1,
+  h2,
+  h3 {
+    font-family: 'Cinzel', serif;
+    color: #7B2C2C;
+  }
+  
+  a {
+    text-decoration: none;
+  }
+  
+  /* Navbar */
+  .navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 1rem 0;
+    background: rgba(245, 241, 232, 0.92);
+    backdrop-filter: blur(6px);
+    z-index: 1000;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  }
+  
+  .nav-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 20px;
-}
-
-.navbar .menu-items {
+  }
+  
+  .logo {
+    font-size: 1.7rem;
+    font-weight: 700;
+    color: #7B2C2C;
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo-icon {
+    font-size: 1.9rem;
+    margin-right: 0.5rem;
+  }
+  
+  .nav-links {
     list-style: none;
     display: flex;
-    gap: 1.5rem;
-}
-
-.navbar .menu-items a {
-    text-decoration: none;
+    gap: 2rem;
+  }
+  
+  .nav-link {
     color: #333;
-    font-size: 1rem;
-}
-
-.navbar .logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #333;
-}
-
-/* Hamburger Menu */
-.navbar input[type="checkbox"],
-.navbar .hamburger-lines {
+    font-weight: 500;
+    position: relative;
+    padding: 0.5rem 0;
+  }
+  
+  .nav-link::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #D4AF37;
+    transition: width .3s;
+  }
+  
+  .nav-link:hover::before {
+    width: 100%;
+  }
+  
+  .socials {
+    display: flex;
+    gap: 1rem;
+    margin-left: 3rem;
+  }
+  
+  .social-icon {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  
+  .social-icon:hover {
+    background: rgba(224, 170, 62, 0.2);
+    color: #fff;
+    transform: translateY(-2px);
+    border-color: rgba(224, 170, 62, 0.4);
+  }
+  
+  .menu-toggle {
     display: none;
-}
-
-@media (max-width: 768px) {
-    .navbar-container {
-        flex-direction: column; /* จัดแนวให้เป็นแนวตั้งบนมือถือ */
-        align-items: flex-start; /* จัดให้เริ่มต้นที่ด้านซ้าย */
+    color: white;
+    font-size: 1.6rem;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+  
+  .menu-toggle:hover {
+    transform: scale(1.1);
+  }
+  
+  /* Scrolled State */
+  
+  
+  /* Responsive Styles */
+  @media (max-width: 992px) {
+    .nav-container {
+        padding: 0 2rem;
     }
-
-    .navbar-container input[type="checkbox"],
-    .navbar-container .hamburger-lines {
-        display: block; /* แสดง hamburger menu */
+  
+    .nav-links {
+        gap: 1.8rem;
     }
-
-    .navbar-container input[type="checkbox"] {
-        position: absolute;
-        height: 32px;
-        width: 30px;
-        top: 20px;
-        left: 20px;
-        z-index: 5;
-        opacity: 0;
-        cursor: pointer;
+  
+    .socials {
+        margin-left: 2rem;
     }
-
-    .navbar-container .hamburger-lines {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        height: 28px;
-        width: 35px;
-        position: absolute;
-        top: 20px;
-        left: 20px;
-        z-index: 2;
-        cursor: pointer;
+  }
+  
+  @media (max-width: 768px) {
+    .nav-container {
+        padding: 0 1.5rem;
     }
-
-    .hamburger-lines .line {
-        height: 4px;
-        width: 100%;
-        border-radius: 10px;
-        background: #333;
-        transition: all 0.3s ease-in-out;
-    }
-
-    .menu-items {
-        background: #fff;
+  
+    .nav-links {
         position: fixed;
-        top: 0;
-        left: 0;
-        height: 100vh;
-        width: 75%;
-        transform: translateX(-100%);
+        top: 76px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 76px);
+        background: #f5f1e8;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
+        justify-content: flex-start;
+        padding: 3rem 0;
+        gap: 2.5rem;
+        transition: left 0.4s ease-out;
+        z-index: 999;
+    }
+  
+    .nav-links.active {
+        left: 0;
+    }
+  
+    .nav-link {
+        font-size: 1.2rem;
+        padding: 0.8rem 1.5rem;
+    }
+  
+    .nav-link::before {
+        height: 3px;
+        bottom: 0.5rem;
+    }
+  
+    .socials {
+        margin: 3rem 0 0;
         gap: 1.5rem;
-        box-shadow: 5px 0px 10px 0px rgba(0, 0, 0, 0.1);
-        transition: transform 0.5s ease-in-out;
-        padding-top: 3rem;
-        z-index: 10;
     }
-
-    .menu-items li {
-        margin-bottom: 1.8rem;
-        font-size: 1.1rem;
+  
+    .social-icon {
+        width: 44px;
+        height: 44px;
+        font-size: 1.2rem;
     }
-
-    .navbar-container input[type="checkbox"]:checked~.menu-items {
-        transform: translateX(0);
+  
+    .menu-toggle {
+        display: block;
     }
-
-    .navbar-container input[type="checkbox"]:checked~.hamburger-lines .line1 {
-        transform: rotate(45deg) translate(5px, 5px);
-    }
-
-    .navbar-container input[type="checkbox"]:checked~.hamburger-lines .line2 {
-        transform: scaleY(0);
-    }
-
-    .navbar-container input[type="checkbox"]:checked~.hamburger-lines .line3 {
-        transform: rotate(-45deg) translate(5px, -5px);
-    }
-}
-
-.hover-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 คอลัมน์ */
-    gap: 20px; /* ระยะห่างระหว่างกล่อง */
-    max-width: 1200px; /* ความกว้างสูงสุด */
-    margin: 20px auto; /* จัดกึ่งกลาง */
-    justify-content: center; /* จัดให้อยู่กึ่งกลางในแนวนอน */
-    align-content: center; /* จัดให้อยู่กึ่งกลางในแนวตั้ง */
-}
-
-.hover-container-2 {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 คอลัมน์ */
-    gap: 20px;
+  }
+  
+  .features {
     max-width: 1200px;
-    margin: 20px auto;
-    justify-content: center;
-    align-content: center;
-}
-
-.hover-component {
-    position: relative;
-    height: 200px;
-    overflow: hidden;
-    border-radius: 10px;
-    border: 2px solid #000;
-    transition: transform 0.5s ease;
-}
-
-.hover-component:hover {
-    transform: scale(1.1);
-}
-
-.hover-component img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.container-2 {
-    perspective: 1000px; /* ระยะห่างมุมมอง */
-    display: flex; /* ใช้ Flexbox */
-    justify-content: center; /* จัดให้อยู่ตรงกลางแนวนอน */
-    align-items: center; /* จัดให้อยู่ตรงกลางแนวตั้ง */
-    height: 100vh; /* ความสูงเต็มหน้าจอ */
-}
-
-.flip-card {
-    width: 450px; /* ขนาดการ์ด */
-    height: 300px; /* ขนาดการ์ด */
-    position: relative;
-    cursor: pointer;
-}
-
-.flip-card-inner {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    transition: transform 0.6s;
-    transform-style: preserve-3d;
-}
-
-.flip-card:hover .flip-card-inner {
-    transform: rotateY(180deg); /* หมุนการ์ดเมื่อเมาส์อยู่บนการ์ด */
-}
-
-.flip-card-front,
-.flip-card-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden; /* ซ่อนด้านหลัง */
-}
-
-.flip-card-front {
-    background-color: #fff; /* สีพื้นหลังด้านหน้า */
+    margin: 0 auto;
+    padding: 40px 20px;
+    text-align: center;
+  }
+  
+  .features h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+  }
+  
+  .subtitle {
+    font-size: 1em;
+    color: #555;
+    margin-bottom: 40px;
+  }
+  
+  .feature-grid {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid #ccc; /* ขอบการ์ด */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.flip-card-back {
-    background-color: #4CAF50; /* สีพื้นหลังด้านหลัง */
-    color: white; /* สีตัวอักษรด้านหลัง */
-    transform: rotateY(180deg); /* เริ่มต้นอยู่ด้านหลัง */
+    flex-direction: column;
+    gap: 40px;
+  }
+  
+  .feature-item {
     display: flex;
-    justify-content: center;
+    flex-wrap: wrap;
     align-items: center;
-    border: 1px solid #ccc; /* ขอบการ์ด */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-/* ปรับสไตล์สำหรับอุปกรณ์มือถือ */
-@media (max-width: 768px) {
-    .navbar .menu-items {
-        flex-direction: column; /* จัดให้เมนูในแนวตั้ง */
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .feature-item:nth-child(even) {
+    flex-direction: row-reverse;
+  }
+  
+  .feature-item img {
+    max-width: 500px;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+  
+  .feature-text {
+    max-width: 500px;
+    text-align: left;
+  }
+  
+  .feature-text h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+  }
+  
+  .feature-text p {
+    font-size: 1em;
+    line-height: 1.6;
+    color: #666;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .feature-item {
+        flex-direction: column !important;
     }
-
-    .navbar .menu-items a {
-        font-size: 0.9rem; /* ลดขนาดตัวอักษรในเมนู */
+    .feature-text {
+        text-align: center;
     }
-
-    .navbar .logo {
-        font-size: 1.3rem; /* ปรับขนาดตัวอักษรของโลโก้ */
-    }
-
-    .hover-container {
-        grid-template-columns: repeat(2, 1fr); /* ปรับจำนวนคอลัมน์เป็น 2 บนมือถือ */
-    }
-
-    .hover-component {
-        height: 150px; /* ปรับความสูงการ์ดให้เหมาะสม */
-    }
-
-    .flip-card {
-        width: 90%; /* ปรับขนาดการ์ดให้พอดีกับหน้าจอ */
-        height: auto; /* ปรับความสูงอัตโนมัติ */
-    }
-}
+  }
