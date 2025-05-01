@@ -1,14 +1,4 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body,
-html {
-  height: 100%;
-  font-family: 'Playfair Display', serif;
-}
+/* Global Vintage Palette */
 * {
   margin: 0;
   padding: 0;
@@ -20,6 +10,21 @@ body {
   color: #333;
   font-family: 'Merriweather', serif;
   line-height: 1.6;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+h1,
+h2,
+h3 {
+  font-family: 'Cinzel', serif;
+  color: #7B2C2C;
+}
+
+a {
+  text-decoration: none;
 }
 
 /* Navbar */
@@ -191,72 +196,71 @@ body {
       display: block;
   }
 }
+
+/* Layout */
 .container {
   display: flex;
-  min-height: 100vh; /* ถ้าอยากให้เริ่มต้นเต็มจอ แต่ยืดได้ตามเนื้อหา */
+  margin-top: 100px;
+  min-height: 100vh;
 }
 
-/* Left panel */
+/* Left Image */
 .left-panel {
   flex: 1;
-  position: relative;
-  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
 }
 
 .left-image {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  max-width: 500px;
+  border: 5px solid #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }
 
-/* Right panel */
+/* Right Content */
 .right-panel {
   flex: 1;
-  background: #f5f1e8;
-  display: flex;
-  flex-direction: column;
-  justify-content: center; /* ทำให้เนื้อหากลางแนวตั้ง */
-  padding: 0 60px;
+  background-color: #fefcf7;
+  padding: 40px;
+  font-family: 'Merriweather', serif;
 }
 
-/* Responsive: Mobile */
-@media (max-width: 768px) {
-  .container {
-    flex-direction: column;
-    min-height: auto; /* ปล่อยสูงตามเนื้อหา */
-  }
-
-  .left-panel, .right-panel {
-    width: 100%;
-    height: auto;
-  }
-
-  .left-panel {
-    background-position: center top;
-  }
-
-  .left-image {
-    height: auto;
-  }
-
-  .right-panel {
-    padding: 20px;
-    text-align: center;
-  }
+.right-panel h1 {
+  font-family: 'Cinzel', serif;
+  font-size: 2.2rem;
+  color: #5e4b32;
+  margin-bottom: 1rem;
 }
 
+.right-panel h2, .right-panel h3 {
+  color: #7B2C2C;
+  margin-top: 1.2rem;
+  margin-bottom: 0.5rem;
+}
 
-/* === Courses Section === */
+.right-panel p {
+  margin-bottom: 1rem;
+  text-align: justify;
+}
+
+/* Courses Section */
+.courses-section {
+  background-color: #f4f0
+}
+
 .courses-section {
   background-color: #f4f0ea;
-  padding: 20px 40px;
+  padding: 60px 20px;
   text-align: center;
-  font-family: 'Georgia', serif;
 }
 
 .courses-title {
-  font-size: 48px;
-  letter-spacing: 2px;
+  font-size: 36px;
+  font-family: 'Cinzel', serif;
   color: #5e4b32;
   margin-bottom: 10px;
 }
@@ -264,93 +268,88 @@ body {
 .courses-subtitle {
   font-size: 18px;
   max-width: 920px;
-  margin: 0 auto 50px;
+  margin: 0 auto 40px;
   color: #333;
+  font-family: 'Merriweather', serif;
 }
 
-/* Course Cards Grid */
+/* Grid Container */
 .courses-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 30px;
-  justify-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
 }
 
-/* Individual Card */
+/* Course Card */
 .course-card {
   position: relative;
-  width: 100%;
-  max-width: 400px;
-  height: 480px;
+  height: 340px;
   background-size: cover;
   background-position: center;
-  border-radius: 10px;
+  border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease;
 }
 
 .course-card:hover {
-  transform: scale(1.02);
+  transform: translateY(-6px);
 }
 
-/* Overlay Style */
+/* Overlay Content */
 .overlay {
   position: absolute;
-  bottom: 0;
+  top: 0;
   width: 100%;
-  padding: 30px 20px;
-  background: linear-gradient(to top, rgba(0,0,0,0.6), rgba(0,0,0,0.2));
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.6), transparent 60%);
   color: #fff;
+  padding: 20px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  height: 100%;
+  justify-content: flex-start; /* เปลี่ยนจาก flex-end เป็น flex-start */
+  align-items: flex-start;
   transition: background 0.3s ease;
 }
 
+
+.course-card:hover .overlay {
+  background: linear-gradient(to top, rgba(123, 44, 44, 0.85), transparent 50%);
+}
+
 .overlay h3 {
-  font-size: 24px;
-  margin-bottom: 15px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  font-family: 'Cinzel', serif;
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
 }
 
 .overlay p {
-  font-size: 16px;
-  line-height: 1.5;
-  margin-bottom: 20px;
+  color: #000; /* สีดำ */
 }
 
-.course-button {
-  font-size: 16px;
-  color: #fff;
-  text-decoration: none;
-  font-weight: bold;
-  display: inline-flex;
-  align-items: center;
-}
-
-.course-button span {
-  margin-left: 6px;
-  transition: transform 0.3s ease;
-}
-
-.course-button:hover span {
-  transform: translateX(4px);
-}
-
-/* Responsive */
-@media (max-width: 600px) {
-  .courses-title {
-    font-size: 32px;
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    margin-top: 80px;
   }
 
-  .overlay h3 {
-    font-size: 20px;
+  .left-panel,
+  .right-panel {
+    width: 100%;
+    padding: 20px;
   }
 
-  .overlay p {
-    font-size: 14px;
+  .left-image {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+  }
+
+  .right-panel {
+    padding: 20px;
   }
 }
