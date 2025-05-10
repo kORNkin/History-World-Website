@@ -24,6 +24,8 @@
         document.body.style.textAlign = "left";
       }
 
+      var MyGameInstance = null;
+
       createUnityInstance(document.querySelector("#unity-canvas"), {
         dataUrl: "Build/1_0.data",
         frameworkUrl: "Build/1_0.framework.js",
@@ -34,7 +36,21 @@
         productVersion: "1.0",
         // matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
         // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
+      }).then((unityInstance) => {
+        MyGameInstance = unityInstance;
+        console.log("Unity instance loaded.");
+      }).catch((message) => {
+        alert(message);
       });
+
+      window.onbeforeunload = function () {
+        console.log("User is leaving the page.");
+        // Optional: send message to Unity
+        if (MyGameInstance) {
+          MyGameInstance.SendMessage("GameManager", "SaveData");
+        }
+        return null;
+      };
     </script>
   </body>
 </html>
